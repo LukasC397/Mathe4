@@ -1,0 +1,49 @@
+
+public class main {
+	double h = 0.01;
+	
+	
+	
+	double insertInFunction(double x) {
+		return 0.0005*Math.pow(x, 6)-0.01*Math.pow(x, 5)+0.12*Math.pow(x, 4)-0.5*Math.pow(x, 3)+0.75*Math.pow(x, 2)-0.4*x;
+	};
+	
+	double approx1Ableitung(double x, double h) {
+		return insertInFunction(x+h)-insertInFunction(x-h) / (2*h);
+	}
+	
+	double approx2Ableitung(double x, double h) {
+		return insertInFunction(x+h) - 2*insertInFunction(x)+insertInFunction(x-h) / (h*h);
+	}
+	
+	double berechneLokalesMinimum(double x, double lambda) { // lambda = schrittweite
+		double Xi = x;
+		double XiPlus1 = x;
+		while(!abbruch(Xi,0.01)) {
+			Xi = XiPlus1;
+			XiPlus1 = Xi - lambda*approx1Ableitung(Xi,h);
+			if(insertInFunction(XiPlus1) >= insertInFunction(Xi)) {
+				lambda = neuesLambda(lambda, Xi);
+				XiPlus1 = Xi - lambda*approx1Ableitung(Xi,h);
+			}
+			
+		}
+	}
+	
+	boolean abbruch(double x, double epsilon) {
+		return  Math.abs(approx1Ableitung(x,h)) < epsilon;
+	}
+	
+	double neuesLambda(double altesLambda, double xAlt) {
+		double xNeu;
+		
+		do {
+			altesLambda /= 2;
+			xNeu = xAlt - altesLambda * approx1Ableitung(xAlt,h);
+		}
+		while(insertInFunction(xNeu) >= insertInFunction(xAlt));
+		
+		return altesLambda;
+	}
+}
+

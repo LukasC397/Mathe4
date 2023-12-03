@@ -1,0 +1,12 @@
+
+public class main {
+	
+	
+	
+	
+	double insertInFunction(double x) {
+		return 0.0005*Math.pow(x, 6)-0.01*Math.pow(x, 5)+0.12*Math.pow(x, 4)-0.5*Math.pow(x, 3)+0.75*Math.pow(x, 2)-0.4*x;
+	};
+	
+}
+
