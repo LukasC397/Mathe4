@@ -1,11 +1,11 @@
 
 public class main {
-	static double h = 0.0001; //bereich um den start X wert zum Abschätzen der Ableitung
-	static double epsilon = 0.0000001;	//genauigkeit des abbruchs
+	static double h = 0.001; //bereich um den start X wert zum Abschätzen der Ableitung
+	static double epsilon = 0.001;	//genauigkeit des abbruchs
 	
 	public static void main(String[] args) {
 		double x = 0; //startwert
-		double lambda0 = 5;
+		double lambda0 = 5; //Schrittweite
 		System.out.println(berechneLokalesMinimum(x,lambda0));
 	}
 	
