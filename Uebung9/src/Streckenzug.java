@@ -27,11 +27,11 @@ public class Streckenzug {
 			System.out.println("Xk: " + wert[0]+" Näherung: " + wert[1]);
 		}
 	}
-
+	
 	static double func1(double x, double y) {
 		//return y + Math.exp(x); //Aufgabe 9.1 a
-		//return x - y; //aufgabe 9.2 b
-		return y*y + 3*x; //aufgabe 9.3
+		return x - y; //aufgabe 9.2 b
+		//return y*y + 3*x; //aufgabe 9.3
 	}
 	
 	static double neuesY(double xAlt, double yAlt) {
